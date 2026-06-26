@@ -37,10 +37,10 @@ jobs:
 
     - name: Descargar Task Definition actual
       run: |
-        aws ecs describe-task-definition --task-definition ep3-backend-task --query taskDefinition > task-definition.json
+        aws ecs describe-task-definition --task-definition ep3-frontend-task --query taskDefinition > task-definition.json
         jq 'del(.taskDefinitionArn, .revision, .status, .requiresAttributes, .compatibilities, .registeredAt, .registeredBy, .enableFaultInjection)' task-definition.json > tmp-task-def.json
         mv tmp-task-def.json task-definition.json
-        
+
     - name: Renderizar nueva imagen en Task Definition
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
