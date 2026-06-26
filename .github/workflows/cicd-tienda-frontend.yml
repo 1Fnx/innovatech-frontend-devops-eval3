@@ -31,6 +31,7 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       run: |
         cd frontend
+        echo "VITE_API_URL=http://alb-innovatech-ep3-575628037.us-east-1.elb.amazonaws.com:3000/api" > .env
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_ENV
