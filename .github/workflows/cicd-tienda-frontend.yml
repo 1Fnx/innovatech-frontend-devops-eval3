@@ -3,8 +3,6 @@ name: CI/CD Tienda Perritos - Frontend a ECS
 on:
   push:
     branches: [ "main" ]
-    paths:
-      - "frontend/**"
 
 jobs:
   build-push-deploy-frontend:
